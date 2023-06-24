@@ -18,15 +18,18 @@
     "*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@t3-oss/env-nextjs": "0.4.1",
     "clsx": "1.2.1",
     "date-fns": "2.30.0",
+    "encoding": "0.1.13",
     "ms": "3.0.0-canary.1",
     "next": "13.4",
     "pusher": "5.1.3",
     "pusher-js": "8.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "server-only": "0.0.1"
+    "server-only": "0.0.1",
+    "zod": "3.21.4"
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.5.3",
