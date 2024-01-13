@@ -32,16 +32,20 @@ export default function Page({ params }: { params: { sessionId: string } }) {
     presenceChannel.bind(
       "pusher:subscription_succeeded",
       (members: Members) => {
-        console.log(JSON.stringify(members, null, 2));
         setSessionMembers(members);
       }
     );
     presenceChannel.bind("pusher:member_added", () => {
       setSessionMembers(presenceChannel.members);
     });
+    presenceChannel.bind("pusher:subscription_error", function (status) {
+      console.log("Subscription failed:", status); // Handle the failure here
+    });
+    // TODO: unbind the specific handlers instead of all the handlers
     return () => {
       pusherClient.unbind("pusher:subscription_succeeded");
       pusherClient.unbind("pusher:member_added");
+      pusherClient.unbind("pusher:subscription_error");
     };
   }, []);
 
